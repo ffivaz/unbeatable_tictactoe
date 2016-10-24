@@ -572,7 +572,7 @@ var viewModel = function () {
         } else {
             s = data.checkIfDraw();
             if (s) {
-                self.winText('DRAW. AGAIN?');
+                self.winText('DRAW AGAIN?');
                 finished();
             }
         }
