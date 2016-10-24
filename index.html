@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unbeatable TicTacToe - the frustrating AI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/lib/jquery-3.0.0.min.js"></script>
+    <script src="js/lib/knockout-3.4.0.js"></script>
+
+</head>
+<body>
+<h1>Unbeatable TicTacToe<br>
+    <small>The Frustrating AI</small>
+</h1>
+
+<div class="flex-parent" id="gameCanvas" data-bind="foreach: gameValuesView">
+    <div class="flex-child" data-bind="text: $data[1] == null ? '' : $data[1] == 1 ? 'X' : 'O', click: $parent.aiTurn() == 0 ? $parent.tileClick : function(){ }"></div>
+</div>
+
+<div class="big" id="over" data-bind="text: winText"></div>
+
+<div class="flex-parent">
+    <div class="flex-info"><a href="https://github.com/">Why can't I win?</a></div>
+</div>
+
+<div class="bottom">
+    <button id="resetBtn" data-bind="text: btnText, click: restartGame"></button>
+</div>
+
+<script src="js/function.js"></script>
+</body>
+</html>
