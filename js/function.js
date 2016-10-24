@@ -104,7 +104,9 @@ var dataModel = function () {
     this.AI = function () {
 
         var j = 0;
-        var partialArray = [];
+        var partialArray;
+        var playerArray;
+        var aiArray;
         var rand;
 
         self.gameValues.forEach(function (v) {
@@ -123,6 +125,20 @@ var dataModel = function () {
 
         // If player begins with a corner, play center, always
         if (j == 1) {
+            playerArray = [];
+            self.gameValues.forEach(function (v) {
+                if (v[1] === 0) {
+                    playerArray.push(v[0]);
+                }
+            });
+
+            if (playerArray.contains(4)) {
+                partialArray = [0, 2, 6, 8];
+                rand = partialArray[Math.floor(Math.random() * partialArray.length)];
+                self.gameValues[rand][1] = 1;
+                return;
+            }
+
             var nullArray = [];
             self.gameValues.forEach(function (v) {
                 if (v[1] === null) {
@@ -136,16 +152,28 @@ var dataModel = function () {
             }
         }
 
-        // Check for partial cross (0X0 across)
+        // Check for partial cross (0X0 across) && center null
         if (j == 3) {
-            var aiArray = [];
+            nullArray = [];
+            self.gameValues.forEach(function (v) {
+                if (v[1] === null) {
+                    nullArray.push(v[0]);
+                }
+            });
+
+            if (nullArray.contains(4)) {
+                self.gameValues[4][1] = 1;
+                return;
+            }
+
+            aiArray = [];
             self.gameValues.forEach(function (v) {
                 if (v[1] === 1) {
                     aiArray.push(v[0]);
                 }
             });
 
-            var playerArray = [];
+            playerArray = [];
             self.gameValues.forEach(function (v) {
                if (v[1] === 0) {
                    playerArray.push(v[0]);
@@ -164,6 +192,7 @@ var dataModel = function () {
 
         // random AI (this is not the best AI)
         var randomAI = function () {
+            var partialArray = [];
             self.gameValues.forEach(function (v) {
                 if (v[1] == null) {
                     partialArray.push(v[0]);
