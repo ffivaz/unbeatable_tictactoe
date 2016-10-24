@@ -1,5 +1,4 @@
-# unbeatable_tictactoe
-Unbeatable TicTacToe - The frustrating AI
+# Unbeatable TicTacToe - The frustrating AI
 
 ## Why is it unbeatable?
 
