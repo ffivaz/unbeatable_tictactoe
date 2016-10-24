@@ -521,6 +521,8 @@ var dataModel = function () {
                 return true;
             }
 
+            if (localArray.contains(4) && nullArray.contains(  ))
+
             return false;
         };
 
