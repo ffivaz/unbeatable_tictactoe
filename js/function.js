@@ -37,6 +37,23 @@ var dataModel = function () {
 
     this.checkWhoWon = function () {
 
+        var winningConfigs = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        /*winningConfigs.forEach(function (w) {
+            if (self.gameValues[w[0]][1] == 1 && self.gameValues[w[1]][1] == 1 && self.gameValues[w[2]][1] == 1) {
+                return 'ai';
+            }
+        });*/
+
         if (self.gameValues[0][1] == 1 && self.gameValues[1][1] == 1 && self.gameValues[2][1] == 1) {
             return 'ai';
         }
